@@ -115,3 +115,30 @@ for(let row=3; row>0; row--){
     }
     console.log(output)
 }
+
+//reverse array by using loop
+let num = [1,2,3,4,5]
+for(let i=0; i < Math.floor(num.length/2); i++){
+    let temp = num[i]
+    num[i] = num[num.length-1-i] //4
+    num[num.length-1-i] = temp
+}
+    // console.log(num)
+
+// log numbers divisible by 5
+let i=1
+while(i <=100){
+    if(i%5==0){
+        // console.log(i)
+    }
+    i++
+}
+
+//for in loop iterate through an objects and logs keys
+let h = {
+    "name":"A",
+    "age":25
+}
+for (let value in h){
+    console.log(value)
+}
