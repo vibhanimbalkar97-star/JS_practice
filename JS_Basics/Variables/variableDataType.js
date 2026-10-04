@@ -62,13 +62,14 @@ let d = Math.random()
 console.log(d)
 
 // create an array using const and try to reassign and observe the error
-let arr = ["Hello", 12, "hey", true ]
-arr = ["abc", 23, "dd", false]
-console.log(arr) //["abc", 23, "dd", false]
+let arr1 = ["Hello", 12, "hey", true ]
+arr1 = ["abc", 23, "dd", false]
+console.log(arr1) //["abc", 23, "dd", false]
 
-const arr = ["Hello", 12, "hey", true ]
-arr = ["abc", 23, "dd", false]
-console.log(arr) //error assign to constant variable =
+const arr2 = ["Hello", 12, "hey", true ]
+// arr2= ["abc", 23, "dd", false]
+// console.log(arr2) //error assign to constant variable 
 
 // Note: in conat variable reassign not done but updation we can do like arr.push(6)
 // a++ gives an erro bcz a = a+1 is again assign to variable.
+
