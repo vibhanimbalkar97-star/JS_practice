@@ -73,3 +73,12 @@ const arr2 = ["Hello", 12, "hey", true ]
 // Note: in conat variable reassign not done but updation we can do like arr.push(6)
 // a++ gives an erro bcz a = a+1 is again assign to variable.
 
+// ==============================================================================
+
+let value = "";
+
+if (value) {
+    console.log("A");
+} else {
+    console.log("B");
+}
