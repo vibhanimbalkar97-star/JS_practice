@@ -502,3 +502,4 @@ hello = function() {};
 | `let` inside `if`                   | Block-scoped     |
 
 **Your main weak point to revise:** `var` + **function scope**. Once that is clear, Q9/Q10 become easy.
+===================================================================================================================================
