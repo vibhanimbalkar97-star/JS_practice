@@ -74,12 +74,3 @@ const arr2 = ["Hello", 12, "hey", true ]
 // a++ gives an erro bcz a = a+1 is again assign to variable.
 
 // ==============================================================================
-
-let value = "";
-
-if (value) {
-    console.log("A");
-} else {
-    console.log("B");
-}
-
