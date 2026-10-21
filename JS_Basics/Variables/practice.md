@@ -662,3 +662,94 @@ Remember: `let` is block-scoped; `var` is function-scoped (or global-scoped when
 Interview memory trick: `var` can escape a block; `let` stays inside its block.
 
 Next, practise the difference between `var`, `let`, and `const` with tricky hoisting and scope questions.
+
+==================================================================================================================================================================
+Let's practise 5 more tricky JavaScript Variables questions. Try to answer without running the code. 😊
+
+## Variables quiz — Level 2
+
+5 questions
+
+Select one answer for each question, then submit.
+
+Q1. What is the output?
+
+console.log(x); let x = 5;
+
+undefined
+
+5
+
+ReferenceError
+
+SyntaxError
+
+Correct!
+
+let is in the Temporal Dead Zone before its declaration. Hindi: Declaration se pehle \`let\` ko access karne par ReferenceError aata hai.
+
+Q2. What is the output?
+
+var a = 1; {   var a = 2; } console.log(a);
+
+1
+
+2
+
+undefined
+
+ReferenceError
+
+Correct answer: 2
+
+var is not block-scoped, so the inner assignment changes the same variable. Hindi: \`var\` block-scoped nahi hai, isliye value 2 ho jaati hai.
+
+Q3. What happens here?
+
+const n = 10; n = 20; console.log(n);
+
+10
+
+20
+
+undefined
+
+TypeError
+
+Correct!
+
+A const variable cannot be reassigned. Hindi: \`const\` ko dobara value assign nahi kar sakte.
+
+Q4. What is the output?
+
+let x = 1; {   let x = 2;   {     let x = 3;     console.log(x);   } }
+
+1
+
+2
+
+3
+
+ReferenceError
+
+Correct!
+
+The innermost block has its own x with value 3. Hindi: Sabse inner block ka apna variable use hota hai.
+
+Q5. What is the output?
+
+var x = 10; function show() {   console.log(x);   let x = 20; } show();
+
+10
+
+20
+
+undefined
+
+ReferenceError
+
+Correct!
+
+The local let x shadows the outer x and is in the Temporal Dead Zone when logged. Hindi: Declaration se pehle \`let\` ko access karne par ReferenceError aata hai.
+
+### Your score: 4/5
