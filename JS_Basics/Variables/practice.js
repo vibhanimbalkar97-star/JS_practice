@@ -1,4 +1,4 @@
-/** let age; // variable declaration = create a variable by giving its a name.
+let age; // variable declaration = create a variable by giving its a name.
 
 // = 40; initialization = Assigning a value to variable for the first time.
 
@@ -63,4 +63,14 @@ let a = 1;
 let a = 2; 
 console.log(a) //syntax error
 
-/** */
+for (var i=0; i < 4; i++) {
+    console.log(i) // 0 1 2 3 
+}
+console.log(i) //4
+
+for (let i=0; i < 4; i++) {
+    console.log(i) // 0 1 2 3 
+}
+// console.log(i) //reference error = i not defined
+
+
