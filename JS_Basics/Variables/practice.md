@@ -501,3 +501,164 @@ SyntaxError
 Check my answers with explanations
 
 जब Variables का यह topic clear हो जाए, अगला topic Data Types and Type Conversion रखें। उसके बाद Operators, Conditions, Loops और Functions इसी तरीके से practice करें।
+
+=========================================================================
+
+You got 3 out of 5 correct! 🎯 Great work. Let's understand each answer in simple English and Hindi.
+
+Your quiz score
+
+# 3/5
+
+Q1, Q2 and Q3 are correct. Q4 and Q5 need correction.
+
+## Q1. `var` hoisting and redeclaration
+
+```
+console.log(a);
+var a = 10;
+var a = 20;
+console.log(a);
+```
+
+Your answer: `undefined, 20` — Correct!
+
+Output:
+
+```
+undefined
+20
+```
+
+Simple English: JavaScript hoists the `var a` declaration to the top, but the value assignment stays where it is. So the first log sees `undefined`. Later, `a` becomes `10` and then `20`.
+
+Hindi: `var` ka declaration pehle process hota hai, lekin value assignment apni jagah par hoti hai. Isliye pehle `undefined` aur last mein `20` print hota hai.
+
+Remember:
+
+- `var` can be redeclared.
+- `var a = 10; var a = 20;` is allowed.
+
+## Q2. `let` and block scope
+
+```
+let x = 10;
+
+{
+  let x = 20;
+  console.log(x);
+}
+
+console.log(x);
+```
+
+Your answer: `20, 10` — Correct!
+
+Output:
+
+```
+20
+10
+```
+
+Simple English: The inner `let x = 20` belongs only to the `{ }` block. It does not change the outer `x`.
+
+Hindi: `{ }` ke andar wala `x` alag variable hai. Woh sirf block ke andar available hai. Bahar wala `x` ab bhi `10` hai.
+
+Remember: `let` is block-scoped.
+
+## Q3. Local `var` and hoisting
+
+```
+var a = 10;
+
+function test() {
+  console.log(a);
+  var a = 20;
+}
+
+test();
+```
+
+Your answer: `undefined` — Correct!
+
+Output:
+
+```
+undefined
+```
+
+Simple English: Inside the function, `var a` is hoisted to the top of the function. This local `a` shadows the outer `a`. When `console.log(a)` runs, the local variable exists but has not yet received the value `20`.
+
+You can think of it like this:
+
+```
+var a = 10;
+
+function test() {
+  var a;             // local declaration is hoisted
+  console.log(a);    // undefined
+  a = 20;
+}
+
+test();
+```
+
+Hindi: Function ke andar `var a` ka apna local variable banta hai. Woh outer `a = 10` ko shadow karta hai. Log hone ke time local `a` mein value assign nahi hui, isliye `undefined` aata hai.
+
+Interview tip: Scope determines which variable is accessed; hoisting explains why the local `var` is already declared.
+
+## Q4. `var` inside a `for` loop
+
+```
+for (var i = 0; i < 3; i++) {}
+
+console.log(i);
+```
+
+Your answer: `2` — Incorrect
+
+Correct output: `3`
+
+Simple English: The loop runs with `i = 0`, `i = 1`, and `i = 2`. After the last iteration, `i++` makes `i` equal to `3`. The condition `3 < 3` is false, so the loop stops. Because `var` is not block-scoped, `i` is still accessible outside the loop.
+
+Hindi: Loop `i = 0, 1, 2` par chalta hai. Last iteration ke baad `i++` se value `3` ho jaati hai. Phir `3 < 3` false hota hai aur loop ruk jaata hai. `var` block-scoped nahi hai, isliye bahar `i` ki value `3` milti hai.
+
+Remember: The last value printed is not necessarily the last value used inside the loop.
+
+## Q5. `let` inside a `for` loop
+
+```
+for (let i = 0; i < 3; i++) {}
+
+console.log(i);
+```
+
+Your answer: `3` — Incorrect
+
+Correct output: `ReferenceError`
+
+```
+ReferenceError: i is not defined
+```
+
+Simple English: The variable `i` declared with `let` is scoped to the `for` loop. Outside that loop, `i` cannot be accessed, so JavaScript throws a `ReferenceError`.
+
+Hindi: `let i` sirf `for` loop ke scope mein available hai. Loop ke bahar `i` access nahi kar sakte. Isliye `ReferenceError` aata hai.
+
+Remember: `let` is block-scoped; `var` is function-scoped (or global-scoped when declared at the top level of a classic script).
+
+## Quick revision table
+
+| Concept                   | Key rule                                             |
+| ------------------------- | ---------------------------------------------------- |
+| `var` hoisting            | Declaration is hoisted; initial value is `undefined` |
+| `var` redeclaration       | Allowed                                              |
+| `let` block scope         | Separate variable inside `{ }`                       |
+| Local `var` in a function | Can shadow an outer variable                         |
+| `var` in a loop           | Accessible outside the loop                          |
+| `let` in a loop           | Not accessible outside the loop                      |
+
+Interview memory trick: `var` can escape a block; `let` stays inside its block.
+
+Next, practise the difference between `var`, `let`, and `const` with tricky hoisting and scope questions.
