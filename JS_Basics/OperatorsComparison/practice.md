@@ -316,6 +316,8 @@ true false
 
 false false
 
+Correct! \`==\` converts the string to a number; \`===\` compares types too.
+
 2\. What is the output?
 
 console.log(null ?? "Hi");
@@ -325,6 +327,8 @@ null
 Hi
 
 undefined
+
+Correct! \`??\` uses the fallback when the left value is null or undefined.
 
 3\. What is the output?
 
@@ -336,6 +340,8 @@ let a = 4; console.log(a++);
 
 undefined
 
+Correct! Post-increment returns the old value first. Afterward, \`a\` becomes 5.
+
 4\. What is the output?
 
 console.log(false || 0 || "JS");
@@ -345,6 +351,8 @@ false
 0
 
 JS
+
+Correct! \`||\` returns the first truthy operand. Both false and 0 are falsy.
 
 5\. What is the output?
 
@@ -356,4 +364,8 @@ const nums = [1, 2]; console.log([...nums, 3]);
 
 [[1, 2], 3]
 
+Correct! Spread expands the array elements into the new array.
+
 Submit answers for review
+
+Current score: 5/5
