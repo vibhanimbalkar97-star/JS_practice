@@ -187,49 +187,6 @@ Output:
 
 Remember: Even though `y++` returns `5`, the variable `y` becomes `6` after the expression.
 
-## 8. Explain operator precedence with an example
-
-English: Operator precedence determines which operation is performed first when an expression contains multiple operators.
-
-Hindi: एक expression में कई operators हों, तो कौन-सा पहले execute होगा, यह operator precedence तय करता है।
-
-```
-console.log(2 + 3 * 4);
-```
-
-Output:
-
-```
-14
-```
-
-Why? Multiplication (`*`) has higher precedence than addition (`+`).
-
-```
-console.log((2 + 3) * 4);
-```
-
-Output:
-
-```
-20
-```
-
-Parentheses `()` force the expression inside them to be evaluated first.
-
-Another important example:
-
-```
-console.log(2 ** 3 ** 2);
-```
-
-Output:
-
-```
-512
-```
-
-Exponentiation `**` is right-associative, so it is evaluated as `2 ** (3 ** 2)` → `2 ** 9` → `512`.
 
 ## 9. Difference between spread (`...`) and rest (`...`) syntax
 
@@ -369,3 +326,114 @@ Correct! Spread expands the array elements into the new array.
 Submit answers for review
 
 Current score: 5/5
+
+==============================================================================================================================
+
+JavaScript: Operators and Comparisons
+
+1. Basic: What is the output? console.log(7 == "7", 7 === "7");
+   A. true true
+   B. false false
+   C. false true
+   D. true false
+
+2. Basic: What is the output? console.log(8 !== "8", 8 != "8");
+   A. true false
+   B. true true
+   C. false false
+   D. false true
+
+3. Basic: What is the output? console.log(!0, !"hello", !!42);
+   A. false true false
+   B. true false true
+   C. true true true
+   D. false false true
+
+4. Intermediate: What is the output? console.log("" || "fallback", "" ?? "fallback");
+   A. an empty string, then fallback
+   B. fallback fallback
+   C. fallback, then an empty string
+   D. an empty string, then an empty string
+
+5. Intermediate: What is the output? let count = 3; let result = count++ + 2; console.log(result, count);
+   A. 6 3
+   B. 6 4
+   C. 5 4
+   D. 5 3
+
+6. Intermediate: Select every expression that evaluates to the number 0.
+   A. Number("3")
+   B. Number(" ")
+   C. Number(undefined)
+   D. Number(false)
+
+7. Tricky: What is the output? console.log(1 + 2 + "3");
+   A. 123
+   B. "33"
+   C. 6
+   D. 33
+
+8. In JavaScript, the expression 2 ** 3 ** 2 is evaluated as (2 ** 3) ** 2.
+   True
+   False
+
+9. In JavaScript, the rest parameter in a function declaration collects the remaining arguments into an array.
+   True
+   False
+
+10. Tricky: What is the output? console.log(null == undefined, null === undefined);
+   A. true true
+   B. true false
+   C. false false
+   D. false true
+
+   `&` and `|` are bitwise operators. They work on the binary (0s and 1s) form of numbers.
+
+```
+console.log(5 & 3, 5 | 3);
+```
+
+Convert numbers to binary:
+
+- `5` = `101`
+- `3` = `011`
+
+1\. Bitwise AND (`&`) — result is `1` only when both bits are `1`.
+
+```
+  101
+& 011
+-----
+  001  → 1
+```
+
+2\. Bitwise OR (`|`) — result is `1` when at least one bit is `1`.
+
+```
+  101
+| 011
+-----
+  111  → 7
+```
+
+Output:
+
+```
+1 7
+```
+
+Easy trick to remember:
+
+- `&` = Both must be `1`.
+- `|` = At least one must be `1`.
+===================================================================================================================================
+
+
+## 1. Topics you should know
+
+\| Topic | What to learn | Priority | |---|---|---| | Pre/post increment | `++x` vs `x++` | Must know | | Pre/post decrement | `--x` vs `x--` | Must know | | Compound assignment | `+=`, `-=`, `*=`, `/=` | Must know | | Operator precedence | Which operator executes first | Must know | | Short-circuit evaluation | `&&`, `||`, `??` | Must know | | Bitwise operators | `&`, `|`, `^`, `~`, `<<`, `>>` | Important | | Comparison and coercion | `==`, `===`, type conversion | Must know | | Ternary operator | `condition ? a : b` | Must know | | `typeof`, `in`, `instanceof` | Other useful operators | Important |
+
+
+
+```
+
