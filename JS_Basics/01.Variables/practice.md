@@ -753,3 +753,53 @@ Correct!
 The local let x shadows the outer x and is in the Temporal Dead Zone when logged. Hindi: Declaration se pehle \`let\` ko access karne par ReferenceError aata hai.
 
 ### Your score: 4/5
+
+Quick rule:
+- NaN means Not-a-Number.
+- NaN === NaN is false.
+- Number.isNaN(value) returns true only when the value is actually NaN. It does not convert strings to numbers.
+
+Interview trick to remember:
+Expression	Output
+NaN === NaN	false
+NaN == NaN	false
+Number.isNaN(NaN)	true
+Number.isNaN("hello")	false
+
+Why is this useful? It helps identify invalid numeric results without mistakenly treating ordinary strings as NaN.
+
+In JavaScript, NaN === NaN is false because NaN represents an invalid or unrepresentable numeric result, and JavaScript defines it as unequal to every value, including itself.
+
+```
+console.log(Number.isNaN(true)); // false
+console.log(isNaN(true));        // false
+```
+
+Why?
+
+1. `Number.isNaN(true)` → `false`\
+   It checks whether the value is actually `NaN`. `true` is a Boolean, not `NaN`.
+2. `isNaN(true)` → `false`\
+   The global `isNaN()` converts `true` to the number `1`. Since `1` is a valid number, the result is `false`.
+
+Remember this trick:
+
+```
+console.log(Number.isNaN("hello")); // false
+console.log(isNaN("hello"));        // true
+```
+
+Hindi: `Number.isNaN()` type conversion nahi karta, lekin global `isNaN()` conversion karta hai. `"hello"` number mein convert karne par `NaN` banta hai.
+
+Important revision
+- Number.isNaN("hello") → false because it doesn't convert strings to numbers.
+- isNaN("hello") → true because the global isNaN() converts the string to a number first, producing NaN.
+- Number.isNaN(10 / "hello") → true because the calculation produces NaN.
+Interview trick: Number.isNaN() checks whether the value is actually NaN; global isNaN() checks whether the value becomes NaN after numeric conversion.
+
+Remember these rules
+- String + Number → usually string concatenation.
+- String - Number → numeric subtraction (string converts to number).
+- * and / → usually convert numeric strings to numbers.
+- + with a string → concatenation.
+- Number("abc") → NaN.
