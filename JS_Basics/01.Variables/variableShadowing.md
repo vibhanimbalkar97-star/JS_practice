@@ -216,3 +216,214 @@ console.log(x); // 20
 | Function parameter has the same name as an outer variable            | Allowed     |
 
 Remember: Shadowing is about the same name in different scopes. Illegal shadowing happens when `var` conflicts with a lexical declaration (`let`/`const`).
+
+Same surrounding scope means variables are declared in the same scope or variable environment, so they can conflict with each other.
+
+### Example 1: Same scope
+
+```
+let x = 10;
+let x = 20; // ❌ SyntaxError
+```
+
+Both `let x` declarations are in the same scope (global scope). JavaScript does not allow this redeclaration.
+
+### Example 2: Different scopes
+
+```
+let x = 10;
+
+{
+  let x = 20; // ✅ Allowed
+  console.log(x); // 20
+}
+
+console.log(x); // 10
+```
+
+Here, the second `x` is inside a separate block scope, so shadowing is allowed.
+
+### Example 3: Tricky `var` case
+
+```
+let x = 10;
+
+{
+  var x = 20; // ❌ SyntaxError
+}
+```
+
+Why? `var` ignores the block `{}` and belongs to the surrounding function or global scope. It conflicts with the existing `let x`.
+
+Remember:
+
+- Same scope + redeclaring `let` → ❌ Error.
+- Different scope + same variable name → ✅ Shadowing is usually allowed.
+- `var` inside a block can still conflict with an outer `let` or `const`.
+
+
+let x = 10;
+
+{
+  let x = 20;
+  {
+    let x = 30;
+    console.log(x); 
+  }
+  console.log(x);
+}
+
+console.log(x);  
+30 20 10
+
+var a = 10;
+
+{
+  let a = 20;
+  console.log(a);
+}
+
+console.log(a);
+2
+20 10
+
+let x = 10;
+
+function test() {
+  var x = 20;
+  console.log(x);
+}
+
+test();
+console.log(x);
+20 10
+
+let num = 100;
+
+{
+  var num = 200;
+}
+
+console.log(num); syntaxerror Identifier 'num' has already been declared
+
+let value = 5;
+
+function test(value) {
+  value = value + 10;
+  console.log(value);
+}
+
+test(20);
+console.log(value); 
+30 5
+
+let x = 1;
+
+function outer() {
+  let x = 2;
+
+  function inner() {
+    console.log(x);
+  }
+
+  inner();
+}
+
+outer();
+2
+
+
+
+let a = 10;
+
+function test() {
+  a = 20;
+  let a = 30;
+  console.log(a);
+}
+
+test();
+console.log(a);
+
+ReferenceError: Cannot access 'a' before initialization
+
+This code gives a ReferenceError because of the Temporal Dead Zone (TDZ).
+
+```
+let a = 10;
+
+function test() {
+  a = 20;          // ❌ ReferenceError
+  let a = 30;
+  console.log(a);
+}
+
+test();
+console.log(a);
+```
+
+### Why does the error happen?
+
+1. `let a = 10` — outer `a` is initialized with `10`.
+2. `function test()` — when the function runs, JavaScript recognizes the inner `let a`.
+3. `a = 20` — ❌ the inner `a` already shadows the outer `a`, but it hasn't been initialized yet. So JavaScript throws a `ReferenceError`.
+4. `let a = 30` — never executes because of the error.
+5. `console.log(a)` and the final `console.log(a)` — never execute in this run.
+
+Important rule: A `let` variable shadows the outer variable throughout its scope, even before its declaration line. Before initialization, it is in the Temporal Dead Zone (TDZ).
+
+To make it work, move the initialization before accessing `a`:
+
+```
+let a = 10;
+
+function test() {
+  let a = 30;
+  a = 20;
+  console.log(a); // 20
+}
+
+test();
+console.log(a); // 10
+```
+
+Here, the inner `a` is separate from the outer `a`, so changing it doesn't affect the outer variable.
+
+Good question! 😊 But `a = 20` is assignment, not initialization.
+
+Let's understand the difference.
+
+### 1. Initialization vs Assignment
+
+```
+let a = 30; // Initialization: declare + assign initial value
+
+a = 20;     // Assignment: change the existing value
+```
+
+- Initialization: Giving a variable its first value.
+- Assignment: Giving an already initialized variable a new value.
+
+### 2. Your example
+
+```
+let a = 10;
+
+function test() {
+  a = 20;     // ❌ Error
+  let a = 30; // Initialization happens here
+  console.log(a);
+}
+
+test();
+```
+
+JavaScript treats the inner `let a` as a separate variable throughout the function scope.
+
+| Code                       | What happens?                                                      |
+| -------------------------- | ------------------------------------------------------------------ |
+| `let a = 10` (outside)     | Outer `a` initialized with `10`                                    |
+| `a = 20` (inside function) | Tries to access inner `a`, which is not initialized yet            |
+| `let a = 30`               | Inner `a` would be initialized here, but execution already stopped |
+
+Remember: JavaScript doesn't skip the inner `a` and use the outer `a`. The inner `a` shadows the outer variable, and before initialization it is in the Temporal Dead Zone (TDZ).
