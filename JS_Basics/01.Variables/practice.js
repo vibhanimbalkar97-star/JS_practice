@@ -91,3 +91,14 @@ console.log(10 + 5 + '2');
 console.log(true + 2);
 console.log(null + 5); //In numeric addition, null converts to 0. So 0 + 5 = 5.
 console.log(undefined + 5); //undefined converts to NaN in numeric addition, and NaN + 5 is NaN.
+// let x = 5;
+// console.log(x++, ++x, x);
+
+// let x = 4;
+// let y = x++;
+// let z = ++x;
+// console.log(x, y, z);
+
+let x = 3;
+x /= 2 + 1;
+console.log(x);
