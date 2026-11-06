@@ -52,12 +52,39 @@
 //     console.log(res)
 // }
 
-for(let i=5; i>=1; i--){
-    res = ""
-    for(let j=5; j>=i; j--){
-        res+=i
-        // console.log(i,j)
-    }
-    console.log(res)
-}
+// for(let i=5; i>=1; i--){
+//     res = ""
+//     for(let j=5; j>=i; j--){
+//         res+=i
+//         console.log(i,j)
+//     }
+//     console.log(res)
+// }
+
+// for(let i=1; i<=3; i++){
+//     res=""
+//     for(let j=1; j<=2; j++){
+//         res+="*"
+//         console.log(res)
+//     }
+//     console.log(res)
+// }
+
+// for(let i=1; i<=5;i++){
+//     res=""
+//     for(let j=1;j<=i;j++){
+//         res+="*"
+//         console.log(i,j)
+//     }
+//     console.log(res)
+// }
+
+// for (let i = 1; i <= 3; i++) {
+//   for (let j = 1; j <= 3; j++) {
+//     if (j === 2) break;
+//     console.log(i, j);
+//   }
+// }
+
+
 
