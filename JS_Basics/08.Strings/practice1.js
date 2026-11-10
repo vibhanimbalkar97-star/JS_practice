@@ -25,6 +25,24 @@
 //     console.log("false")
 // }
 
+/**
+ * Interview trick: जब भी question में ये words आएँ, ध्यान दो:
+- Count each character → Frequency object
+- Count vowels → Counter + if
+- Find duplicate characters → Frequency + condition
+- First non-repeating character → Frequency + loop
+ */
 // count character
-let str = "banana"
+// let str = "banana"
+
+// let res = {}
+
+// for(let char of str){
+//     if(res[char]){
+//         res[char]++
+//     } else {
+//         res[char] = 1
+//     }
+// }
+// console.log(res)
 
