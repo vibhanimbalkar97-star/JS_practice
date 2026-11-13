@@ -244,7 +244,7 @@
  * modern toReversed = create new reversed array
  */
 
-let a = [10,20,30]
+// let a = [10,20,30]
 // a.reverse()
 // console.log(a)             // [ 30, 20, 10 ]
 
@@ -356,6 +356,245 @@ let a = [10,20,30]
  * Can we break forEach()? No, not with break or continue.
  */
 
-let n = [10, 20, 30];
+// let n = [10, 20, 30];
 
+// n.forEach(num => console.log(num))
+
+// n.forEach((n, i, array) => {
+//     console.log(n,i,array)
+// })
+
+// update element
+// n.forEach((num, i, arr)=>{
+//     arr[i] = num * 2
+//     console.log(num, i, arr[i])
+// })
+// console.log(n) //[ 20, 40, 60 ]
+
+/**
+ * map    = Transform Every Array Element
+ * creates new array = by applying callback function to each element
+ * When you use { } in an arrow function, you need an explicit return.      
+ * if not use = undefined comes.
+ * In React, map() is commonly used to render lists of components.
+ * For lists that can be reordered or changed, use a stable unique ID as the key, rather than the array index.
+ */
+
+// let n = [1, 2, 3, 4];
+
+// let res = n.map((num) => num * 2 )
+// console.log(res)  //[ 2, 4, 6, 8 ]
+// console.log(n)    //[ 1, 2, 3, 4 ]
+
+// let res = n.map((num, i) => {
+//  return `${num}: ${i}`
+// })
+// console.log(res)    //[ '1: 0', '2: 1', '3: 2', '4: 3' ]
+
+// map with objects
+// let users = [
+//   { name: "Raj", age: 25 },
+//   { name: "Priya", age: 30 }
+// ];
+// let res = users.map((user) => {
+//     return `${user.name}: ${user.age}`
+// })
+// console.log(res)    //[ 'Raj: 25', 'Priya: 30' ]
+
+/**
+ * filter         = Filter Elements Based on Condition
+ * Returns a new array containing only elements that pass the condition.
+ * return         = an new array
+ * returns        = all matches, true conditions
+ * no match found = []
+ * Checks every element in the array
+ * mutate orignal array = No
+*/
+
+// let n = [10, 15, 20, 25, 30];
+
+// let res = n.filter(num => num > 20)
+// console.log(res)   // [ 25, 30 ] 
+// console.log(n)     //[ 10, 15, 20, 25, 30 ]
+
+// // even numvers
+// let res = n.filter(num => num%2===0)
+// console.log(res)      //[ 10, 20, 30 ]
+
+// let users = [
+//   { name: "Raj", age: 17 },
+//   { name: "Priya", age: 25 },
+//   { name: "Amit", age: 30 }
+// ];
+
+// let res = users.filter(user => user.age >= 20)
+// console.log(res)      //[ { name: 'Priya', age: 25 }, { name: 'Amit', age: 30 } ]
+
+/**
+ * find    = find the first matching element.
+ * return a single element. like = 5
+ * if no element found = undefined
+ * mutate orignal array = No
+ * It checks elements one by one and stops when it finds the first matching element.
+ *  does not return a new array. Instead, it returns the value of the first element that passes your test condition, or undefined if nothing matches
+ * */
+// let n = [10, 20, 30, 40];
+
+// // let res = n.find(num => num > 40)
+// // console.log(res)  //undefined
+
+// // let res = n.find(num => num > 30)
+// // console.log(res)  //40
+
+// let users = [
+//   { id: 1, name: "Raj" },
+//   { id: 2, name: "Priya" },
+//   { id: 3, name: "Amit" }
+// ];
+
+// let res = users.find(user => user.id === 2)
+// console.log(res)       //  { id: 2, name: "Priya" },
+
+/**
+ * findIndex    = Find Index of First Matching Element
+ * return index.
+ * if no index found = -1
+ * mutate orignal array = No
+ * It checks elements one by one and stops when it finds the first matching element.
+ *  does not return a new array. Instead, it returns the index of the first element that passes your test condition, or undefined if nothing matches
+ * */
+// let n = [10, 20, 30, 40];
+
+// // let res = n.findIndex(num => num > 40)
+// // console.log(res)      //-1
+
+// let res = n.findIndex(num => num > 30)
+// console.log(res)      //3
+
+/**
+ * Some    = Check Whether At Least One Element Matches
+ * Or like logic
+ * Returns true if at least one element passes the condition.
+ * if no match = false return.
+ * stops on first true
+ * */
+// let n = [1, 3, 5, 8];
+// let res = n.some(num => num > 5)
+// console.log(res)       // true
+
+/**
+ * every    = Check Whether All Elements Match
+ * Returns true only if every element passes the condition.
+ * if no match = false return.
+ * AND like condition
+ * stops on first false.
+ * */
+
+// let n = [2,4,6,8]
+// let res = n.every(num => num%2===0)
+// console.log(res)      //true
+
+// let n = [2,4,6,8,9]
+// let res = n.every(num => num%2===0)
+// console.log(res)      //false
+
+// let n = []
+// console.log(n.some((num) => num > 0 ))      //false
+// console.log(n.every((num) => num > 0 ))    //true
+// Because there is no element that violates the condition. This is called vacuous truth.
+
+/**
+ * reduce    = processes array elements and combines them into a single accumulated result.
+ * syntax    = array.reduce((accumulator, currentValue) => {
+  return updatedAccumulator;
+}, initialValue);
+ * no new array created, reduce in one result
+ * */
+// sum of array
+// let n = [10, 20, 30, 40];
+// let res = n.reduce((acc, curr) => {
+//     return acc + curr
+// }, 0)
+// console.log(res)         //100
+
+// Find maximum number
+// let n = [10, 50, 20, 80, -30];
+// let max = n.reduce((acc, curr) => {
+//     return acc > curr ? acc : curr
+// }, 0)
+// console.log(max)
+
+// 
+// let arr = ["a", "b", "a", "c", "b", "a"];
+// let res = arr.reduce((acc, curr) => {
+//     acc[curr] = (acc[curr] || 0) + 1
+//     return acc;
+// }, {})
+// console.log(res)
+
+/**
+ * flat    = Flatten Nested Arrays
+ * flat() removes one level of nesting by default.
+ * flat() with depth = arr.flat(2) = teo levels
+ * arr.flat(Infinity) = all nested levels
+ * returns new array
+ * 
+ * */
+
+// let arr = [1, 2, [3, 4], [5, 6]];
+// let res = arr.flat()
+// console.log(arr.flat())  //one level of nesting by default = [1,2,3,4,5,6]
+// console.log(arr, res)    // [ 1, 2, [ 3, 4 ], [ 5, 6 ] ] [ 1, 2, 3, 4, 5, 6 ]
+
+// let arr = [1, 2, [[3, 4], [5, 6]]];
+// // console.log(arr.flat())            // [ 1, 2, [ 3, 4 ], [ 5, 6 ] ]
+// console.log(arr.flat(2))            //[ 1, 2, 3, 4, 5, 6 ]
+
+/**
+ * fill    = Fill Array with a Specific Value
+ * syntax =(value, start, end), end is excluded
+ * modify = original array.
+ * */
+
+
+
+// let arr = [1, 2, 3, 4, 5];
+// arr.copyWithin(1,2)
+// console.log(arr)  //[1,3,4,5,5]
+
+// let arr = [10, 20, 30];
+// let res = arr.toSpliced(2, 1, 200)
+// console.log(res)   //[ 10, 20, 200 ]
+// console.log(arr)   //[ 10, 20, 30 ]
+
+/**
+ * Destructuring = Destructuring means extracting array values into separate variables.
+ * skip element = [a, , c] empty position skip second element
+ * default values= [a, b=50]
+ * rest with destructuring = [a,b,...num], num comes in array[]
+ * swapping variables = [a,b] =[b,a]
+ */
+// let arr = [10, , 30, 40, 50];
+
+// let [b,c,d] = arr
+// console.log(b)  //10
+// console.log(c)  //20
+// console.log(d)  //30
+
+// let[, ,...d] = arr
+// console.log(d) // [30,40,50]
+
+// let [a, , b] = arr
+// console.log(a,b)// 10, 30
+
+// let [a,b=80] = arr
+// console.log(a, b) //10,80
+
+let a = 10; // if not ; then gives reference error for swapping
+let b = 20;
+
+[a, b] = [b, a];
+
+console.log(a); // 20
+console.log(b); // 10
 
