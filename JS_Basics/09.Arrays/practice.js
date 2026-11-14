@@ -590,11 +590,124 @@
 // let [a,b=80] = arr
 // console.log(a, b) //10,80
 
-let a = 10; // if not ; then gives reference error for swapping
-let b = 20;
+// let a = 10; // if not ; then gives reference error for swapping
+// let b = 20;
 
-[a, b] = [b, a];
+// [a, b] = [b, a];
 
-console.log(a); // 20
-console.log(b); // 10
+// console.log(a); // 20
+// console.log(b); // 10
+
+
+/**
+ * spread             = expanding elements of an array.
+ * copy array         = [...array] 
+ * combine array      = [...a, ...b]
+ * add elements while copying = [10,...a, 40]
+ * spread            = used when passing or combing values
+ * syntax            = [...arr]
+ * 
+ * rest             = collects the elements into new array
+ * used             = in function parameter, destructing
+ * syntax           =[first, ...remaining]
+ */
+// copy array
+// let a = [10, 20, 30];
+// // let b = [...a]
+// // let c = [50,60]
+// // console.log(b,a)   //[ 10, 20, 30 ] [ 10, 20, 30 ]
+
+// // // combine arrays
+// // let res = [...a, ...c]
+// // console.log(res)    //[ 10, 20, 30, 50, 60 ]
+
+// //Add elements while copying
+// let r = [10, ...a, 40]
+// console.log(r, a)    //[ 10, 10, 20, 30, 40 ] [ 10, 20, 30 ]
+
+/**
+ * reference          = b = a , reference to a, if change in b also change in a.
+ * why?               = b = a does not create new array. both variables refers to same object.
+ * 
+ * shallow copy       = use spread, so here new array create.
+ * change             = if change in a does not change in b.
+ * problem            = with nested object
+ * why?               = spread makes a shallow copy: outer array is copied, but nested object still shared references.
+ * 
+ * Deep copy          = Deep copy creates independent copies of nested objects too.
+ * structuredClone()  = supports many built-in types, including arrays, objects, Maps and Sets, but not every JavaScript value (for example, functions).
+ */
+
+// reference 
+// let a = [1,2,3,4]
+// let b = a
+// b[0]  = 100
+
+// console.log(a,b) //[ 100, 2, 3, 4 ] [ 100, 2, 3, 4 ]
+
+// shallow copy
+// let b = [...a]
+// b[1]  = 200
+// console.log(a, b) //[ 1, 2, 3, 4 ] [ 1, 200, 3, 4 ]
+
+// const stud = [
+//   {name: "Raj"},
+//   {name: "Karan"}
+// ]
+// console.log(stud)  //[ { name: 'Raj' }, { name: 'Karan' } ]
+
+// let   b = [...stud]
+// b[0].name = "AAAA" 
+// console.log(b, stud) // [ { name: 'AAAA' }, { name: 'Karan' } ] [ { name: 'AAAA' }, { name: 'Karan' } ]
+
+// deep copy
+// let a1 = [1,2,3,4,5]
+// let b1 = structuredClone(a1)
+// b1[0]  = 100
+// console.log(a1, b1) //[ 1, 2, 3, 4, 5 ] [ 100, 2, 3, 4, 5 ]
+
+// const stud = [
+//   {name: "Raj"},
+//   {name: "Karan"}
+// ]
+
+// let b1     = structuredClone(stud)
+// b1[0].name = "AAAA"
+// console.log(b1, stud)  // [ { name: 'AAAA' }, { name: 'Karan' } ] [ { name: 'Raj' }, { name: 'Karan' } ]
+
+/**
+ * nested array accessing elements  
+ * arr[0]    = [10, 20]
+ * arr[0][1] = 20
+ * 
+ * nested loops
+ * for(let i =0; i< arr.length; i++){
+ * for(let j =0; j< arr[i].length; j++){
+ * console.log(arr[i][j])
+ * }}
+ * Why two loops?
+- Outer loop accesses each inner array.
+- Inner loop accesses each value inside that inner array.
+ */
+
+// let arr = [
+//   [10, 20],
+//   [30, 40]
+// ];
+// console.log(arr[1])   //[30,40]
+// console.log(arr[1][1])//40
+
+// for (let i=0; i < arr.length; i++){
+//   // console.log(i)  //gives index 0 1
+//   // console.log(arr[i])  //[ 10, 20 ]
+//                         // [ 30, 40 ]
+  
+// }
+
+// for (let i=0; i < arr.length; i++){
+//  for (let j =0; j < arr[i].length; j++){
+//   console.log(arr[i][j])
+//  }
+  
+// }
 
