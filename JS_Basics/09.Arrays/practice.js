@@ -708,6 +708,51 @@
 //  for (let j =0; j < arr[i].length; j++){
 //   console.log(arr[i][j])
 //  }
-  
 // }
 
+/**
+ * array chaining  = used multiple array methods one after another.
+ * Logic:
+1. filter() selects employees earning more than 30,000.
+2. map() extracts their salaries.
+3. reduce() calculates the total.
+ */
+
+// Find the total salary of employees whose salary is greater than 30,000.
+// let employees = [
+//   { name: "Raj", salary: 25000 },
+//   { name: "Priya", salary: 50000 },
+//   { name: "Amit", salary: 40000 }
+// ];
+
+// let res = employees.filter(emp => emp.salary > 30000)
+//           .map(emp => emp.salary)
+//           .reduce((acc, curr) => acc + curr, 0)
+// console.log(res)
+
+
+/**
+ * Sparse Arrays and Empty Slots 
+ * A sparse array contains empty slots between its indexes.
+ * But an empty slot is not exactly the same as an element containing undefined.
+ * forEach  = skips empty slot
+ * map      = preserve empty slot
+ * for-of   = gives undefined for empty slot
+ * empty, null, undefined are not inerchangable.
+*/
+// let a = [10, , 30];
+// let b = [10, undefined, 30];
+
+// console.log(1 in a); // false = has empty slot at index 1
+// console.log(1 in b); // true = value is undefined
+
+// let arr = [10, , 30];
+// arr.forEach(x => console.log(x));  //10 30
+
+// let result = arr.map(x => x * 2);
+// console.log(result);
+// // [20, empty, 60]
+
+// for (let value of arr) {
+//   console.log(value);  
+// }
